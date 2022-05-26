@@ -4,12 +4,18 @@ import ApiResponse from '@com/apicom/ApiResponse';
 import ApiRoute from '@com/apicom/ApiRoute';
 export default ApiRoute(async (req, res, { user }) => {
   const { question, items } = req.body || {};
-  if(!/[a-zA-Z0-9]{4,500}/.test(question || '')) return ApiResponse.failed(res, "INVALID_QUESTION");
+  if(
+    (question || '')?.length < 4 || 
+    (question || '')?.length > 500 || 
+  ) return ApiResponse.failed(res, "INVALID_QUESTION");
   if(!items?.length) return ApiResponse.failed(res, "INVALID_ANSWER");
   let foundCorrect = false;
   for(let i = 0; i < items.length; i++){
     const item = items[i];
-    if(!/[a-zA-Z0-9]{1,500}/.test(item.text || '')) return ApiResponse.failed(res, "INVALID_ANSWER");
+    if(
+      (item.text || '')?.length < 4 || 
+      (item.text || '')?.length > 500 || 
+    ) return ApiResponse.failed(res, "INVALID_ANSWER");
     if(item.correct) {
       if(foundCorrect) return ApiReponse.failed(res, "INVALID_DATA");
       foundCorrect = true;
