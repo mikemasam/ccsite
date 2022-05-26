@@ -14,7 +14,7 @@ export default ({ appProps = {}, children }) => {
   }
   return (
     <Nav
-      isCollapsed
+      defaultIsCollapsed
       //defaultOpenKeys={['task']}
       bodyStyle={{ minHeight: "75vh" }}
       items={user ? authItems : anonItems}
