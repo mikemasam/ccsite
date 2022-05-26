@@ -16,11 +16,11 @@ export default ({ children, appProps= {} }) => {
       </Link>
       <Link href="/daily" passHref>
         <a>
-        <Nav.Item component="a" itemKey='challenges' text='Daily Challenges' />
+        <Nav.Item component="a" itemKey='challenges' text='每日挑战' />
         </a>
       </Link>
       <Link href="/resources">
-        <Nav.Item component="a" itemKey='resources' text='Resources' />
+        <Nav.Item component="a" itemKey='resources' text='外部资源' />
       </Link>
       <Link href="/leaderboard">
         <Nav.Item itemKey='Leaderboard' text='Leaderboard' />

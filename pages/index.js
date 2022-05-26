@@ -8,7 +8,7 @@ export default function Home() {
     <div style={{ padding: 20 }}>
 
       <Space vertical spacing={50} align="start">
-        <Space vertical spacing={10} align="start">
+        <Space vertical spacing={30} align="start">
           <Title>
             Practice to improve your language skills
           </Title>

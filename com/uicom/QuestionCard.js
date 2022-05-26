@@ -27,9 +27,9 @@ export default function QuestionCard({
       {question &&
       <Card bodyStyle={{ padding: 10 }} 
         loading={data.loading}>
-        <Space vertical align="start">
+        <Space vertical spacing={10} align="start">
           <Typography.Title heading={5} style={{ color: "inherit" }}>
-            Question  
+            问题
           </Typography.Title>
           <Typography.Paragraph spacing="extended">
             <div style={{ fex: 1, marginBottom: 10, display: "flex" }}>
@@ -43,7 +43,7 @@ export default function QuestionCard({
         {answers?.length > 0 &&
         <Space vertical align="start">
           <Typography.Title heading={5} style={{ color: "inherit" }}>
-            Answers
+            选择一个
           </Typography.Title>
           {answers.map(a => (
             <Tag size="large" 

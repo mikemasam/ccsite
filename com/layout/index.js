@@ -9,7 +9,7 @@ export default ({ appProps, children }) => {
   const { Header, Footer, Sider, Content } = Layout;
   //style={{ minWidth: 230 }}
   return (
-    <LocaleProvider locale={en_US}>
+    <LocaleProvider locale={zh_CN}>
       <Layout style={{border: '1px solid var(--semi-color-border)'}}>
         <Header style={{backgroundColor: 'var(--semi-color-bg-1)'}}>
           <AppNav appProps={appProps} />

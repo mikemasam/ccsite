@@ -14,7 +14,7 @@ export default ({ appProps = {}, children }) => {
   }
   return (
     <Nav
-      defaultIsCollapsed
+      //defaultIsCollapsed
       //defaultOpenKeys={['task']}
       bodyStyle={{ minHeight: "75vh" }}
       items={user ? authItems : anonItems}
@@ -29,7 +29,7 @@ export default ({ appProps = {}, children }) => {
 const anonItems = [
   { 
     itemKey: 'challenges', 
-    text: 'Challenges', 
+    text: '挑战', 
     icon: <IconHash />,
     items: [
       { itemKey: "challenges", text: 'List', icon: <IconHash /> }, 
@@ -50,7 +50,7 @@ const anonItems = [
 const authItems = [
   { 
     itemKey: 'challenges', 
-    text: 'Challenges', 
+    text: '挑战', 
     icon: <IconHash />,
     items: [
       { itemKey: "/challenges", text: 'List', icon: <IconHash /> }, 
@@ -60,19 +60,19 @@ const authItems = [
   },
   { 
     itemKey: 'exams', 
-    text: 'Exams', 
+    text: '考试', 
     icon: <IconHourglass />,
     items: ['List', 'History', 'Manage']
   },
   { 
     itemKey: 'rosources', 
-    text: 'Resources', 
+    text: '外部资源', 
     icon: <IconSourceControl />, 
     items: ['List', 'Manage']
   },
   { 
     itemKey: '/users', 
-    text: 'Users', 
+    text: '用户', 
     icon: <IconUser />,
   },
 ]
