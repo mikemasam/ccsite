@@ -13,7 +13,7 @@ export default ApiRoute(async (req, res, { user }) => {
   for(let i = 0; i < items.length; i++){
     const item = items[i];
     if (
-      (item.text || '')?.length < 4 || 
+      (item.text || '')?.length < 1 || 
       (item.text || '')?.length > 500 
     ) return ApiResponse.failed(res, "INVALID_ANSWER");
     if(item.correct) {
