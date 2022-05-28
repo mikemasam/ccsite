@@ -21,14 +21,16 @@ export default function CreateAccountPage() {
   return (
     <Row>
       <Col span={12} offset={6}>
-        <Typography.Title style={{ textAlign: "center", margin: 10 }}>Create Account</Typography.Title>
+        <Typography.Title style={{ textAlign: "center", margin: 10 }}>
+          创建账户
+        </Typography.Title>
         <Form onSubmit={onSubmit}>
-          <Form.Input field='name' label='Display Name' />
-          <Form.Input field='username' label='User Name' />
-          <Form.Input field='password' type="password" label='Password' />
+          <Form.Input field='name' label='显示名称' />
+          <Form.Input field='username' label='用户名' />
+          <Form.Input field='password' type="password" label='密码' />
           <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-            <Button htmlType="reset">Reset</Button>
-            <Button type="primary" htmlType="submit">Submit</Button>
+            <Button htmlType="reset">复位输入</Button>
+            <Button type="primary" htmlType="submit">提交</Button>
           </div>
         </Form>
       </Col>

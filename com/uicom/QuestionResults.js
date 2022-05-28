@@ -7,7 +7,7 @@ export default function QuestionResults({ resetResults, results }){
       <Col span={12} offset={6}>
         <Card bodyStyle={{ display: "flex", flexDirection: "row", padding: 10 }}>
           <Title style={{ flex: 1 }}>
-            Results 
+            挑战结果
           </Title>
           <Space spacing={15}>
             <Title type="success">
@@ -23,7 +23,7 @@ export default function QuestionResults({ resetResults, results }){
           marginTop: 40, display: "flex", 
           flexDirection: "row", justifyContent: "flex-end" }}>
           <Button theme="solid" onClick={resetResults} type="primary">
-            Try Again
+            再试一次
           </Button>
         </div>
       </Col>

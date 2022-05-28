@@ -12,7 +12,9 @@ export default function Home() {
     <div>
       <Space spacing={"loose"} align="center" style={{ marginBottom: 20 }}>
         <IconUser />
-        <Typography.Title heading={5} >All Users</Typography.Title>
+        <Typography.Title heading={5}>
+          所有用户
+        </Typography.Title>
       </Space>
       <Table
         loading={data.loading}
@@ -30,15 +32,11 @@ export default function Home() {
 }
 const columns = [
   {
-    title: 'Name',
+    title: '姓名',
     dataIndex: 'name',
   },
   {
-    title: 'Username',
-    dataIndex: 'username',
-  },
-  {
-    title: "Date",
+    title: "加入日期",
     dataIndex: "created_at",
     render: (text, record, index) => {
       return DateTime.fromMillis(record.created_at || 0).toLocaleString(DateTime.DATE_FULL);

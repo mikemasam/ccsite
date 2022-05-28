@@ -4,14 +4,16 @@ import { Layout } from '@douyinfe/semi-ui';
 import { LocaleProvider } from '@douyinfe/semi-ui';
 import AppSideBar from './AppSideBar';
 import AppNav from './AppNav';
+import StaticNav from './StaticNav';
 
 export default ({ appProps, children }) => {
   const { Header, Footer, Sider, Content } = Layout;
   //style={{ minWidth: 230 }}
   return (
     <LocaleProvider locale={zh_CN}>
-      <Layout style={{border: '1px solid var(--semi-color-border)'}}>
+      <Layout>
         <Header style={{backgroundColor: 'var(--semi-color-bg-1)'}}>
+          <StaticNav />
           <AppNav appProps={appProps} />
         </Header>
         <Layout>
@@ -23,6 +25,10 @@ export default ({ appProps, children }) => {
             backgroundColor: 'var(--semi-color-bg-0)'
           }}>{children}</Content>
         </Layout>
+        <footer style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+          <p> &copy;</p>
+          <p>学习汉语</p>
+        </footer>
       </Layout>
     </LocaleProvider>
   );

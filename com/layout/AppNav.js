@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Nav, Avatar, Dropdown, Select, Button } from '@douyinfe/semi-ui';
 import { IconArticle, IconHome, IconUserAdd, IconUser, IconSetting, IconEdit, IconLanguage } from '@douyinfe/semi-icons';
 
-export default ({ children, appProps= {} }) => {
+export default ({ children, appProps = {} }) => {
   const { user } = appProps;
   return (
     <Nav mode='horizontal' defaultSelectedKeys={['Home']}>
@@ -19,25 +19,26 @@ export default ({ children, appProps= {} }) => {
         <Nav.Item component="a" itemKey='challenges' text='每日挑战' />
         </a>
       </Link>
-      <Link href="/resources">
-        <Nav.Item component="a" itemKey='resources' text='外部资源' />
-      </Link>
-      <Link href="/leaderboard">
-        <Nav.Item itemKey='Leaderboard' text='Leaderboard' />
-      </Link>
       <Nav.Footer>
         {!user &&
         <>
           <Link href="/login">
-            <Button theme="borderless" style={{ marginRight: 10 }}>Login</Button>
+            <Button theme="borderless" style={{ marginRight: 10 }}>登录</Button>
           </Link>
           <Link href="/create-account">
-            <Button theme="borderless" style={{ marginRight: 10 }}>Create Account</Button>
+            <Button theme="borderless" style={{ marginRight: 10 }}>创建账户</Button>
           </Link>
         </>
         }
         {user &&
-          <Avatar color='blue' size='small'>{user?.name?.[0]}</Avatar>
+          <>
+          <Link href="/logout">
+            <Button theme="borderless" type="danger" style={{ marginRight: 10 }}>
+              登出
+            </Button>
+          </Link>
+            <Avatar color='blue' size='small'>{user?.name?.[0]?.toUpperCase?.()}</Avatar>
+          </>
         }
       </Nav.Footer>
     </Nav>

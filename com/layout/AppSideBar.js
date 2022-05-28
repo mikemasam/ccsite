@@ -14,10 +14,10 @@ export default ({ appProps = {}, children }) => {
   }
   return (
     <Nav
-      //defaultIsCollapsed
+      defaultIsCollapsed={!user}
       //defaultOpenKeys={['task']}
       bodyStyle={{ minHeight: "75vh" }}
-      items={user ? authItems : anonItems}
+      items={items}
       onClick={onSelect}
       footer={{
         collapseButton: true,
@@ -26,49 +26,11 @@ export default ({ appProps = {}, children }) => {
   );
 }
 
-const anonItems = [
+const items = [
   { 
-    itemKey: 'challenges', 
+    itemKey: "/challenges", 
     text: '挑战', 
     icon: <IconHash />,
-    items: [
-      { itemKey: "challenges", text: 'List', icon: <IconHash /> }, 
-      { itemKey: "challenges/history", text: 'History', icon: <IconHash /> }, 
-    ]
-  },
-  { 
-    itemKey: 'exams', 
-    text: 'Exams', 
-    icon: <IconHourglass />,
-  },
-  { 
-    itemKey: 'resouces', 
-    text: 'Resources', 
-    icon: <IconSourceControl />, 
-  },
-]
-const authItems = [
-  { 
-    itemKey: 'challenges', 
-    text: '挑战', 
-    icon: <IconHash />,
-    items: [
-      { itemKey: "/challenges", text: 'List', icon: <IconHash /> }, 
-      { itemKey: "/challenges/history", text: 'History', icon: <IconHash /> }, 
-      { itemKey: "/editor/challenges", text: 'Manage', icon: <IconHash /> }, 
-    ]
-  },
-  { 
-    itemKey: 'exams', 
-    text: '考试', 
-    icon: <IconHourglass />,
-    items: ['List', 'History', 'Manage']
-  },
-  { 
-    itemKey: 'rosources', 
-    text: '外部资源', 
-    icon: <IconSourceControl />, 
-    items: ['List', 'Manage']
   },
   { 
     itemKey: '/users', 

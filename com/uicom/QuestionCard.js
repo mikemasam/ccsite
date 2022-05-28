@@ -19,9 +19,6 @@ export default function QuestionCard({
       return ls.map(l => ({ ...l, selected: l.id == id && state }));
     });
   }
-  const answerClicked = () => {
-    console.log("answer clicked");
-  }
   return (
     <Space vertical style={{ display: "flex", alignItems: "stretch" }} spacing={30}>
       {question &&
@@ -47,7 +44,6 @@ export default function QuestionCard({
           </Typography.Title>
           {answers.map(a => (
             <Tag size="large" 
-              //onClick={answerClicked}
               onClick={() => onAnswerSelect(question.id, a.id)}
               style={{ height: "auto", padding: 10, whiteSpace: 'pre-wrap', flex: 1, cursor: "pointer" }} 
               color={"blue"}>
@@ -68,11 +64,17 @@ export default function QuestionCard({
         flex: 1,
         marginTop: 40, display: "flex", 
         flexDirection: "row", justifyContent: "space-between" }}>
-        <Button onClick={prevStage} disabled={currentStage <= 0} >Back</Button>
-        <Button onClick={nextStage} type="primary">
-          {hasMore && "Next"}
-          {!hasMore && "Complete"}
+        <Button onClick={prevStage} disabled={currentStage <= 0} >上一个</Button>
+        {hasMore && 
+        <Button disabled={!answer} onClick={nextStage} type="primary">
+          下一个
         </Button>
+        }
+        {!hasMore && 
+          <Button disabled={!answer} onClick={nextStage} type="primary">
+            完毕
+          </Button>
+        }
       </div>
     </Space>
   );

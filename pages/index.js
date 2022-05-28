@@ -16,9 +16,11 @@ export default function Home() {
             Start your daily challenge, climb a leaderboard, 
             participate on different exams across the country.
           </Paragraph>
-          <Button>
-            Start your daily challenge...
-          </Button>
+          <Link href="/daily">
+            <Button>
+              Start your daily challenge...
+            </Button>
+          </Link>
         </Space>
         <Space vertical spacing={10} align="start">
           <Title heading={5}>

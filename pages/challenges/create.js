@@ -17,7 +17,7 @@ export default function LoginPage() {
       setForm(v => ({ ...v, loading: false }));
       if(res.success){
         Toast.info({ content: res.message });
-        Router.push("/editor/challenges");
+        Router.push("/challenges");
       }else{
         Toast.error({ content: res.message });
       }
@@ -37,15 +37,15 @@ export default function LoginPage() {
     <Spin spinning={form.loading}>
       <Space spacing={"loose"} align="center" style={{ marginBottom: 20 }}>
         <IconHash />
-        <Typography.Title heading={5} style={{ flex: 1 }}>Create Challenge</Typography.Title>
+        <Typography.Title heading={5} style={{ flex: 1 }}>添加挑战</Typography.Title>
       </Space>
-      {form.stage == 0 && <TextArea value={form.question} onChange={onChange} placeholder='Question' />}
+      {form.stage == 0 && <TextArea value={form.question} onChange={onChange} placeholder='挑战' />}
       {form.stage == 1 && <AnswersList items={form.items} onItemsChange={onItemsChange} />}
       <div style={{ 
         marginTop: 40, display: "flex", 
         flexDirection: "row", justifyContent: "space-between" }}>
-        <Button onClick={prevStage} disabled={form.stage <= 0} >Back</Button>
-        <Button onClick={nextStage} type="primary">Next</Button>
+        <Button onClick={prevStage} disabled={form.stage <= 0} >上一个</Button>
+        <Button onClick={nextStage} type="primary">下一个</Button>
       </div>
     </Spin>
   )
@@ -96,9 +96,9 @@ function AnswersList({ items, onItemsChange }){
           onChange={onChange} 
           value={text} 
           addonBefore={"#" + (list.length + 1)}
-          placeholder='Add Answer' 
+          placeholder='回答' 
           style={{ marginRight: 10 }}/>
-        <Button onClick={addItem}>Add</Button>
+        <Button disabled={!text} onClick={addItem}>加</Button>
       </div>
     </div>
   );

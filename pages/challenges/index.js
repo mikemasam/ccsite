@@ -2,23 +2,27 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Divider, Tag, Card, List, Space, Typography, Avatar, Button, Toast } from '@douyinfe/semi-ui';
-import { IconHash } from '@douyinfe/semi-icons';
+import { Pagination } from '@douyinfe/semi-ui';
+import { IconPlus, IconHash } from '@douyinfe/semi-icons';
 import { DateTime } from 'luxon';
 import AppRoute from '@com/appcom/route';
 import useApiGet from '@com/api/useApiGet';
 
-export default function EditorChallengesPage() {
+export default function EditorChallengesPage({ appProps }) {
   const { data, load, paginate } = useApiGet({ url: "/api/editor/challenges" });
+  const { user }  = appProps || {};
   return (
     <div>
       <div style={{ display: "flex", marginBottom: 20, justifyContent: "space-between"  }}>
         <Space spacing={"loose"} align="center">
           <IconHash />
-          <Typography.Title heading={5} style={{ flex: 1 }}>Challenges</Typography.Title>
+          <Typography.Title heading={5} style={{ flex: 1 }}>
+            挑战
+          </Typography.Title>
         </Space>
-        <Link href="/editor/challenges/create">
-          <Button type='primary' theme='solid'>
-            Create
+        <Link href="/challenges/create">
+          <Button disabled={!user} type='primary' theme='solid'>
+            <IconPlus /> 添加新挑战 
           </Button>
         </Link>
       </div>
@@ -26,13 +30,18 @@ export default function EditorChallengesPage() {
         size="large"
         loading={data.loading}
         dataSource={data.results || []}
-        renderItem={item => <ChallengeItem reload={load} item={item} /> }
+        renderItem={item => <ChallengeItem user={user} reload={load} item={item} /> }
       />
+      <div style={{ display: "flex", justifyContent: "center", flexDirection: "row" }}>
+        <Pagination total={data.total} pageSize={data.per_page} 
+          onPageChange={paginate}
+          showTotal style={{ margin: 15 }} />
+      </div>
     </div>
   )
 }
 
-function ChallengeItem({ item, reload }){
+function ChallengeItem({ item, reload, user }){
   const { data, load, reset, api, setLoading } = useApiGet({ 
     url: `/api/editor/challenges/${item.id}/answers`, autoLoad: false 
   });
@@ -78,18 +87,18 @@ function ChallengeItem({ item, reload }){
             {DateTime.fromMillis(item.created_at || 0).toLocaleString(DateTime.DATE_FULL)}
           </Typography.Text>
           <Typography.Text code>
-            {item.status == 1 && "Active"}
-            {item.status == 0 && "Removed"}
+            {item.status == 1 && "积极的"}
+            {item.status == 0 && "移除"}
           </Typography.Text>
         </Space>
         {item.status == 0 &&
-        <Button onClick={onEnable}>
-          Enable
+        <Button onClick={onEnable} disabled={!user}>
+          恢复挑战
         </Button>
         }
         {item.status == 1 &&
-          <Button type="danger" onClick={onRemove}>
-            Remove
+          <Button type="danger" disabled={!user} onClick={onRemove}>
+            从列表中删除
           </Button>
         }
       </div>
@@ -109,5 +118,4 @@ function ChallengeItem({ item, reload }){
 
 
 export const getServerSideProps = AppRoute(() => {
-  console.log("loading home...");
 }, { secured: false });
