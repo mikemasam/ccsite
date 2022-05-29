@@ -6,7 +6,7 @@ import { DateTime } from 'luxon';
 import AppRoute from '@com/appcom/route';
 import useApiGet from '@com/api/useApiGet';
 
-export default function Home() {
+export default function UsersPage() {
   const { data, load, paginate } = useApiGet({ url: "/api/editor/users" });
   return (
     <div>
@@ -44,5 +44,4 @@ const columns = [
   }
 ];
 export const getServerSideProps = AppRoute(() => {
-  console.log("loading home...");
 }, { secured: false });

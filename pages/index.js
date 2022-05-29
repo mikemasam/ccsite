@@ -45,5 +45,4 @@ export default function Home() {
   )
 }
 export const getServerSideProps = AppRoute(() => {
-  console.log("loading home...");
 }, { secured: false });

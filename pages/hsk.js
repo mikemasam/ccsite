@@ -166,5 +166,4 @@ function Vocabulary(){
 
 
 export const getServerSideProps = AppRoute(() => {
-  console.log("loading home...");
 }, { secured: false });

@@ -19,6 +19,11 @@ export default ({ children, appProps = {} }) => {
         <Nav.Item component="a" itemKey='challenges' text='每日挑战' />
         </a>
       </Link>
+      <Link href="/pinyin" passHref>
+        <a>
+        <Nav.Item component="a" itemKey='pinyin' text='翻译' />
+        </a>
+      </Link>
       <Nav.Footer>
         {!user &&
         <>
