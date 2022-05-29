@@ -51,7 +51,7 @@ export default function QuestionCard({
                 <Checkbox 
                   onChange={(state) => onCheckboxChanged(state, a.id)}
                   checked={answer == a.id} />
-                <Typography.Text style={{ color: "inherit" }}>
+                <Typography.Text style={{ color: "inherit", fontWeight: 600 }}>
                   {a.content}
                 </Typography.Text>
               </Space>

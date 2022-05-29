@@ -33,12 +33,13 @@ export default function QuestionCardResult({
         <Space vertical align="start">
           {answers.map(a => (
             <Tag size="large" 
-              onClick={() => onAnswerSelect(question.id, a.id)}
               style={{ height: "auto", padding: 10, whiteSpace: 'pre-wrap', flex: 1, cursor: "pointer" }} 
-              color={summary?.correct == a.id ? "green" : "rgba(1, 1, 1, 1)"}>
+              color={summary?.correct == a.id ? "green" : "yellow"}>
               <Space>
-                <Checkbox checked={summary?.selected == a.id} />
-                <Typography.Text style={{ color: "inherit" }}>
+                {(summary?.selected == a.id || summary?.correct == a.id) && 
+                <Checkbox checked={summary?.selected == a.id} color={"red"}/>
+                }
+                <Typography.Text style={{ color: "inherit", fontWeight: 600 }}>
                   {a.content}
                 </Typography.Text>
               </Space>
