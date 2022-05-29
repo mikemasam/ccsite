@@ -4,6 +4,7 @@ import AppRoute from '@com/appcom/route';
 import useApiGet from '@com/api/useApiGet';
 import Questions from '@com/uicom/Questions';
 import QuestionResults from '@com/uicom/QuestionResults';
+import QuestionsResult from '@com/uicom/QuestionsResult';
 
 export default function DailyChallengePage() {
   const { data, load, api, setLoading } = useApiGet({ url: "/api/challenges/daily" });
@@ -23,8 +24,10 @@ export default function DailyChallengePage() {
   }
   return (
     <Spin spinning={data.loading}>
-      {!data.loading && !results && <Questions onSubmit={onSubmit} questions={data.results}/>}
       {results && <QuestionResults resetResults={resetResults} results={results} />}
+      {!data.loading && !results && 
+      <Questions onSubmit={onSubmit} questions={data.results} results={results} />}
+      {results && <QuestionsResult questions={data.results} results={results} /> }
     </Spin>
   )
 }

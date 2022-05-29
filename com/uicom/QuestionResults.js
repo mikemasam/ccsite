@@ -3,7 +3,7 @@ import { IconVerify, IconClose } from '@douyinfe/semi-icons';
 const { Title } = Typography;
 export default function QuestionResults({ resetResults, results }){
   return (
-    <Row>
+    <Row style={{ margin: 10 }}>
       <Col span={12} offset={6}>
         <Card bodyStyle={{ display: "flex", flexDirection: "row", padding: 10 }}>
           <Title style={{ flex: 1 }}>
