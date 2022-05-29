@@ -36,6 +36,7 @@ function makeQuestion(text, user){
     content: text,
     user_id: user.id,
     created_at: DateTime.now().toMillis(),
+    updated_at: DateTime.now().toMillis(),
     status: 0,
   }).returning(['id']);
 }

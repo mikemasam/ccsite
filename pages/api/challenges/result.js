@@ -1,4 +1,5 @@
 import db, { paginate } from '@com/apicom/db';
+import { DateTime } from 'luxon';
 import ApiResponse from '@com/apicom/ApiResponse';
 
 export default async function handler(req, res) {
@@ -18,9 +19,17 @@ export default async function handler(req, res) {
       results.incorrect.push(qs[i])
     }
   }
+  await updateUsage(qs);
   return ApiResponse(res, results, 200);
 }
 
 function findAnswer(a_id){
   return db("answers").where({ id: a_id }).first();
 }
+
+async function updateUsage(qs) {
+  return db("questions").whereIn("id", qs).update({ 
+    updated_at: DateTime.now().toMillis(),
+  });
+}
+

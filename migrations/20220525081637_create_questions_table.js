@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.integer('user_id');
     table.integer('status').default(0);
     table.bigInteger('created_at');
+    table.bigInteger('updated_at');
   })
 };
 
