@@ -22,31 +22,33 @@ export default function QuestionCardResult({
       {question &&
       <Card bodyStyle={{ padding: 10 }} 
         loading={data.loading}>
-        <Space vertical spacing={10} style={{ marginBottom: 10 }} align="start">
-          <Typography.Paragraph spacing="extended">
-            <div style={{ fex: 1, marginBottom: 10, display: "flex" }}>
-              {question.content}
-            </div>
-          </Typography.Paragraph>
+        <Space vertical spacing={10}>
+          <Space vertical spacing={10} style={{ marginBottom: 10 }} align="start">
+            <Typography.Paragraph spacing="extended">
+              <div style={{ fex: 1, marginBottom: 10, display: "flex" }}>
+                {question.content}
+              </div>
+            </Typography.Paragraph>
+          </Space>
+          {answers?.length > 0 &&
+          <Space vertical align="start">
+            {answers.map(a => (
+              <Tag size="large" 
+                style={{ height: "auto", padding: 10, whiteSpace: 'pre-wrap', flex: 1, cursor: "pointer" }} 
+                color={summary?.correct == a.id ? "green" : "yellow"}>
+                <Space>
+                  {(summary?.selected == a.id || summary?.correct == a.id) && 
+                  <Checkbox checked={summary?.selected == a.id} color={"red"}/>
+                  }
+                  <Typography.Text style={{ color: "inherit", fontWeight: 600 }}>
+                    {a.content}
+                  </Typography.Text>
+                </Space>
+              </Tag>
+            ))}
+          </Space>
+          }
         </Space>
-        {answers?.length > 0 &&
-        <Space vertical align="start">
-          {answers.map(a => (
-            <Tag size="large" 
-              style={{ height: "auto", padding: 10, whiteSpace: 'pre-wrap', flex: 1, cursor: "pointer" }} 
-              color={summary?.correct == a.id ? "green" : "yellow"}>
-              <Space>
-                {(summary?.selected == a.id || summary?.correct == a.id) && 
-                <Checkbox checked={summary?.selected == a.id} color={"red"}/>
-                }
-                <Typography.Text style={{ color: "inherit", fontWeight: 600 }}>
-                  {a.content}
-                </Typography.Text>
-              </Space>
-            </Tag>
-          ))}
-        </Space>
-        }
       </Card>
       }
       <div style={{ 
