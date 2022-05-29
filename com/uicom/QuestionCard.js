@@ -36,7 +36,7 @@ export default function QuestionCard({
         </Space>
       </Card>
       }
-      <Card bodyStyle={{ padding: 10 }}>
+      <Card loading={data.loading} bodyStyle={{ padding: 10 }}>
         {answers?.length > 0 &&
         <Space vertical align="start">
           <Typography.Title heading={5} style={{ color: "inherit" }}>
