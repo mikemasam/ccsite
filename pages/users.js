@@ -6,8 +6,11 @@ import { DateTime } from 'luxon';
 import AppRoute from '@com/appcom/route';
 import useApiGet from '@com/api/useApiGet';
 
-export default function UsersPage() {
+export default function UsersPage({ appProps }) {
+  const { user } = appProps;
   const { data, load, paginate } = useApiGet({ url: "/api/editor/users" });
+  const _columns = columns;
+  if(user?.user_type == 2) _columns.push(...adminColumns);
   return (
     <div>
       <Space spacing={"loose"} align="center" style={{ marginBottom: 20 }}>
@@ -40,6 +43,31 @@ const columns = [
     dataIndex: "created_at",
     render: (text, record, index) => {
       return DateTime.fromMillis(record.created_at || 0).toLocaleString(DateTime.DATE_FULL);
+    }
+  },
+  {
+    title: "...",
+    dataIndex: "user_type",
+    render: (text, record, index) => {
+      if(record.user_type == 2)
+        return "系统管理员";
+      return "-";
+    }
+  }
+];
+
+const adminColumns = [
+  {
+    title: "...",
+    dataIndex: "id",
+    render: (text, record, index) => {
+      if(record.user_type == 2)
+        return "系统管理员";
+      return (
+        <Button >
+          成为管理员
+        </Button>
+      );
     }
   }
 ];

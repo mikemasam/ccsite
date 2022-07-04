@@ -21,7 +21,7 @@ export default function EditorChallengesPage({ appProps }) {
           </Typography.Title>
         </Space>
         <Link href="/challenges/create">
-          <Button disabled={!user} type='primary' theme='solid'>
+          <Button disabled={user?.user_type != 2} type='primary' theme='solid'>
             <IconPlus /> 添加新挑战 
           </Button>
         </Link>
@@ -92,12 +92,12 @@ function ChallengeItem({ item, reload, user }){
           </Typography.Text>
         </Space>
         {item.status == 0 &&
-        <Button onClick={onEnable} disabled={!user}>
+        <Button onClick={onEnable} disabled={user?.user_type != 2}>
           恢复挑战
         </Button>
         }
         {item.status == 1 &&
-          <Button type="danger" disabled={!user} onClick={onRemove}>
+          <Button type="danger" disabled={user?.user_type != 2} onClick={onRemove}>
             从列表中删除
           </Button>
         }

@@ -11,6 +11,7 @@ export default async function(req){
   return {
     name: user.name,
     username: user.username,
-    id: user.id
+    id: user.id,
+    user_type: user.user_type
   };
 }
